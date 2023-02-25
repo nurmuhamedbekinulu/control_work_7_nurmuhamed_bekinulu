@@ -5,7 +5,6 @@
 {% endblock %}
 {% block content%}
 <div class="container">
-    <h1>Вы точно хотите удалить запись?</h1>
     <div class="card mt-5">
         <div class="card-body">
             <h5 class="card-title">Имя автора: {{ entry.author_name }}</h5>
@@ -14,9 +13,10 @@
             <form action="{% url 'confirm_delete' entry.pk %}" method="post">
                 {% csrf_token %}
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <input type="submit" class="btn btn-outline-secondary" value="Удалить">
+                    <h2 class="text-center">Вы точно хотите удалить запись?</h2>
+                    <input type="submit" class="btn btn-outline-secondary" value="Да">
                     <button class="btn btn-outline-secondary btn-block btn_link_color"><a href="{% url 'index' %}"
-                            class="">Отмена</a></button>
+                            class="">Нет</a></button>
                 </div>
             </form>
         </div>

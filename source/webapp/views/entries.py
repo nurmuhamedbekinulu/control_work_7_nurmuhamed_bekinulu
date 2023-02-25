@@ -45,7 +45,7 @@ def update_view(request, pk):
         if not request.POST.get('author_mailbox'):
             errors['author_mailbox'] = 'Поле с почтой обязательно к заполнению'
 
-        if not request.POST.get('author_name'):
+        if not request.POST.get('text'):
             errors['text'] = 'Поле с текстом записи обязательно к заполнению'
 
         entry.author_name = request.POST.get('author_name')

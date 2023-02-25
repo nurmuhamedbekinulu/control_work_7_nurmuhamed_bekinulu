@@ -1,27 +1,21 @@
 {% csrf_token %}
 <div class="mb-3 row">
-    {% if errors %}
-        <p>{{ errors.author_name}}</p>
-    {% endif %}
     <label for="author_name" class="col-sm-2 col-form-label">Имя</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control" id="author_name" name="author_name" value="{{ entry.author_name }}">
+        <input type="text" class="form-control" id="author_name" name="author_name" value="{{ entry.author_name }}" placeholder="{% if errors %} {{ errors.author_name}} {% endif %}">
     </div>
 </div>
 <div class="mb-3 row">
-    {% if errors %}
-        <p>{{ errors.author_mailbox}}</p>
-    {% endif %}
     <label for="author_mailbox" class="col-sm-2 col-form-label">Почта</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" id="author_mailbox" name="author_mailbox"
-            value="{{ entry.author_mailbox }}">
+            value="{{ entry.author_mailbox }}" placeholder="{% if errors %} {{ errors.author_mailbox}} {% endif %}">
     </div>
 </div>
+{% if errors %}
+    <p>{{ errors.text}}</p>
+{% endif %}
 <div class="mb-3 row">
-    {% if errors %}
-        <p>{{ errors.text}}</p>
-    {% endif %}
     <label for="text" class="col-sm-2 col-form-label">Текс записи</label>
     <div class="col-sm-10">
         <textarea class="form-control" name="text" id="text" cols="30" rows="10">{{ entry.text }}</textarea>

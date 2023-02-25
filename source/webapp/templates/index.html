@@ -7,11 +7,13 @@
 {% for task in tasks %}
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ task.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ task.status }}</h6>
-    <p class="card-text">{{ task.description }}</p>
-    <p class="card-text">{{ task.completion_date }}</p>
-    <a href="{% url 'task_detail' task.pk %}" class="card-link">Подробнее...</a>
+    <h5 class="card-title">{{ entry.author_name }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ entry.author_mailbox }}</h6>
+    <p class="card-text">{{ entry.text }}</p>
+    <p class="card-text">{{ entry.created_at }}</p>
+    <p class="card-text">{{ entry.updated_at }}</p>
+    <p class="card-text">{{ entry.status }}</p>
+    <!-- <a href="{% url 'task_detail' task.pk %}" class="card-link">Подробнее...</a> -->
   </div>
 </div>
 {% endfor %}

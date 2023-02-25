@@ -1,6 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
-from webapp.models import Task
+from webapp.models import Entry
 from django.http import HttpResponseNotFound
 from django.urls import reverse
 from static.classes.static import Static
@@ -8,48 +8,47 @@ from static.classes.static import Static
 
 def add_view(request: WSGIRequest):
     if request.method == "GET":
-        return render(request, 'task_create.html', context={'choices': Static.choices})
+        return render(request, 'entry_create.html', context={'choices': Static.choices})
 
-    if request.POST.get('completion_date') != "":
-        completion_date = request.POST.get('completion_date')
-    else:
-        completion_date = None
-
-    task_data = {
-        'title': request.POST.get('title'),
-        'description': request.POST.get('description'),
-        'status': request.POST.get('status'),
-        'completion_date': completion_date
+    entry_data = {
+        'author_name': request.POST.get('author_name'),
+        'author_mailbox': request.POST.get('author_mailbox'),
+        'text': request.POST.get('text'),
+        'created_at': request.POST.get('created_at'),
+        'updated_at': request.POST.get('updated_at'),
+        'status': request.POST.get('status')
     }
-    task = Task.objects.create(**task_data)
-    return redirect('task_detail', pk=task.pk)
+    entry = Entry.objects.create(**entry_data)
+    return redirect('entry_detail', pk=entry.pk)
 
 
 def detail_view(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, 'task.html', context={
-        'task': task
+    entry = get_object_or_404(Entry, pk=pk)
+    return render(request, 'entry.html', context={
+        'entry': entry
     })
 
 
 def update_view(request, pk):
-    task = get_object_or_404(Task, pk=pk)
+    entry = get_object_or_404(Entry, pk=pk)
     if request.method == "POST":
-        task.title = request.POST.get('title')
-        task.description = request.POST.get('description')
-        task.status = request.POST.get('status')
-        task.completion_date = request.POST.get('completion_date')
-        task.save()
-        return redirect('task_detail', pk=task.pk)
-    return render(request, 'task_update.html', context={'task': task, 'choices': Static.choices})
+        entry.author_name = request.POST.get('author_name')
+        entry.author_mailbox = request.POST.get('author_mailbox')
+        entry.text = request.POST.get('text')
+        entry.created_at = request.POST.get('created_at')
+        entry.updated_at = request.POST.get('updated_at')
+        entry.status = request.POST.get('status')
+        entry.save()
+        return redirect('entry_detail', pk=entry.pk)
+    return render(request, 'entry_update.html', context={'entry': entry, 'choices': Static.choices})
 
 
 def delete_view(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, 'task_confirm_delete.html', context={'task': task})
+    entry = get_object_or_404(Entry, pk=pk)
+    return render(request, 'entry_confirm_delete.html', context={'entry': entry})
 
 
 def confirm_delete(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    task.delete()
+    entry = get_object_or_404(Entry, pk=pk)
+    entry.delete()
     return redirect('index')

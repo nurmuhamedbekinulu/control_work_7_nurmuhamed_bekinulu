@@ -3,8 +3,8 @@
 {% block content%}
 <h1>Создать новую задачу</h1>
 <div class="form  col-8">
-    <form action="{% url 'task_add' %}" method="post">
-    {% include 'partial/task_form.html' with button_text='Создать' %}
+    <form action="{% url 'entry_add' %}" method="post">
+    {% include 'partial/entry_form.html' with button_text='Создать' %}
     </form>
 </div>
 {% endblock %}

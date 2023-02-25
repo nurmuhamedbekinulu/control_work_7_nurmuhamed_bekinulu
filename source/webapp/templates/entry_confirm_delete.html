@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Task confirm delete{% endblock %}
+{% block title %}Entry confirm delete{% endblock %}
 {% block menu %}
-    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Задачу</a>
+    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Запись</a>
 {% endblock %}
 {% block content%}
 <div class="container">
-    <h1>Вы точно хотите удалить задачу?</h1>
+    <h1>Вы точно хотите удалить запись?</h1>
     <div class="card mt-5">
         <div class="card-body">
-            <h5 class="card-title">Заголовок: {{ task.title }}</h5>
-            <p>Описание: {{ task.description|linebreaks  }}</p>
-            <p>Статус: {{ task.status }}</p>
-            <p>Выполнить до: {{ task.completion_date }}</p>
-            <form action="{% url 'confirm_delete' task.pk %}" method="post">
+            <h5 class="card-title">Имя автора: {{ entry.author_name }}</h5>
+            <p>Почта автора: {{ entry.author_mailbox }}</p>
+            <p>Запис: {{ entry.text|linebreaks  }}</p>
+            <p>Статус: {{ entry.status }}</p>
+            <form action="{% url 'confirm_delete' entry.pk %}" method="post">
                 {% csrf_token %}
                 <p><input type="submit" value="Удалить"></p>
                 <p><a href="{% url 'index' %}">Отмена</a></p>

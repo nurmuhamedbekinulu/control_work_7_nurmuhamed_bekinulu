@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Создать новую задачу{% endblock %}
+{% block title %}Создать новую запись{% endblock %}
 {% block content%}
-<h1>Создать новую задачу</h1>
+<h1>Создать новую запись</h1>
 <div class="form  col-8">
     <form action="{% url 'entry_add' %}" method="post">
     {% include 'partial/entry_form.html' with button_text='Создать' %}

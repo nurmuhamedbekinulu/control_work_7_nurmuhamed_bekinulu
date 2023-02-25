@@ -4,8 +4,7 @@ from webapp.models import Entry
 
 
 def index_view(request: WSGIRequest):
-    entries = Entry.objects.all()
-    # entries = Entry.objects.exclude(is_deleted=True)
+    entries = Entry.objects.exclude(is_deleted=True)
     context = {
         'entries': entries
     }

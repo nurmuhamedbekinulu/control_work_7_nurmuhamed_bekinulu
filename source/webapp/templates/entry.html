@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
-{% block title %}Task{% endblock %}
+{% block title %}Entry{% endblock %}
 {% block menu %}
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'task_update' task.pk %}">Редактировать Задачу</a>
+    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Задачу</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'task_delete' task.pk %}">Удалить Задачу</a>
+    <a class="nav-link" href="{% url 'entry_delete' entry.pk %}">Удалить Задачу</a>
 </li>
 {% endblock %}
 {% block content%}
 <div class="container">
     <div class="card mt-5">
         <div class="card-body">
-            <h5 class="card-title">Заголовок: {{ task.title }}</h5>
-            <p>Описание: {{ task.description|linebreaks }}</p>
-            <p>Статус: {{ task.status }}</p>
-            <p>Выполнить до: {{ task.completion_date }}</p>
+            <h5 class="card-title">Имя автора: {{ entry.author_name }}</h5>
+            <p>Почта автора: {{ entry.author_mailbox }}</p>
+            <p>Запис: {{ entry.text|linebreaks  }}</p>
+            <p>Статус: {{ entry.status }}</p>
         </div>
     </div>
 </div>

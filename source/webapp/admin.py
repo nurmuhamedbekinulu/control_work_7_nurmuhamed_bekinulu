@@ -3,12 +3,13 @@ from webapp.models import Entry
 
 
 # Register your models here.
-# class TaskAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title', 'description', 'status', 'completion_date')
-#     list_filter = ('id', 'title', 'status', 'completion_date')
-#     search_fields = ('title', 'status', 'completion_date')
-#     fields = ('text', 'title', 'description', 'status', 'completion_date')
-#     readonly_fields = ('id', 'id')
+class EntryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'author_name', 'author_mailbox', 'text', 'created_at', 'updated_at', 'status')
+    list_filter = ('id', 'author_name', 'author_mailbox', 'status')
+    search_fields = ('author_name', 'author_mailbox', 'status')
+    fields = ('author_name', 'author_mailbox', 'text', 'status')
+    readonly_fields = ('id', 'created_at', 'updated_at')
 
 
-# admin.site.register(Task, TaskAdmin)
+admin.site.register(Entry, EntryAdmin)
+        

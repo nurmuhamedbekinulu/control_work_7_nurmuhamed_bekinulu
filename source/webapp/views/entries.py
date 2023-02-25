@@ -1,8 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import Entry
-from django.http import HttpResponseNotFound
-from django.urls import reverse
 from static.classes.static import Static
 
 
@@ -13,20 +11,10 @@ def add_view(request: WSGIRequest):
     entry_data = {
         'author_name': request.POST.get('author_name'),
         'author_mailbox': request.POST.get('author_mailbox'),
-        'text': request.POST.get('text'),
-        'created_at': request.POST.get('created_at'),
-        'updated_at': request.POST.get('updated_at'),
-        'status': request.POST.get('status')
+        'text': request.POST.get('text')
     }
     entry = Entry.objects.create(**entry_data)
-    return redirect('entry_detail', pk=entry.pk)
-
-
-def detail_view(request, pk):
-    entry = get_object_or_404(Entry, pk=pk)
-    return render(request, 'entry.html', context={
-        'entry': entry
-    })
+    return redirect('index')
 
 
 def update_view(request, pk):
@@ -35,9 +23,8 @@ def update_view(request, pk):
         entry.author_name = request.POST.get('author_name')
         entry.author_mailbox = request.POST.get('author_mailbox')
         entry.text = request.POST.get('text')
-        entry.status = request.POST.get('status')
         entry.save()
-        return redirect('entry_detail', pk=entry.pk)
+        return redirect('index')
     return render(request, 'entry_update.html', context={'entry': entry, 'choices': Static.choices})
 
 

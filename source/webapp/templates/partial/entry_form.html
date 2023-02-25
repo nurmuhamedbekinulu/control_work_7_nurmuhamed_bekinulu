@@ -18,20 +18,6 @@
         <textarea class="form-control" name="text" id="text" cols="30" rows="10">{{ entry.text }}</textarea>
     </div>
 </div>
-<div class="mb-3 row">
-    <label for="status" class="col-sm-2 col-form-label">Статус</label>
-    <div class="col-sm-10">
-        <select id="status" name="status" class="form-select">
-            {% for choice in choices %}
-            {% if entry.status == choice.0 %}
-            <option value="{{ choice.0 }}" selected>{{ choice.1 }}</option>
-            {% else %}
-            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
-    </div>
-</div>
 <div class="d-grid gap-2 col-8 mx-auto">
     <button type="submit" class="btn btn-outline-primary mb-3">{{ button_text }}</button>
 </div>

@@ -121,3 +121,14 @@ label {
 legend {
 	display: block;
 }
+.tech_icon {
+	margin: auto 10px auto 40px;
+	font-size: 40px;
+	color: black;
+}
+.btn_link_color a{
+	color: #6c757d;
+}
+.btn_link_color:hover a{
+	color: white;
+}

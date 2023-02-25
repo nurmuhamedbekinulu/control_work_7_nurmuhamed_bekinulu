@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Entry confirm delete{% endblock %}
 {% block menu %}
-    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Запись</a>
+<a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Запись</a>
 {% endblock %}
 {% block content%}
 <div class="container">
@@ -10,12 +10,14 @@
         <div class="card-body">
             <h5 class="card-title">Имя автора: {{ entry.author_name }}</h5>
             <p>Почта автора: {{ entry.author_mailbox }}</p>
-            <p>Запис: {{ entry.text|linebreaks  }}</p>
-            <p>Статус: {{ entry.status }}</p>
+            <p>Запис: {{ entry.text|linebreaks }}</p>
             <form action="{% url 'confirm_delete' entry.pk %}" method="post">
                 {% csrf_token %}
-                <p><input type="submit" value="Удалить"></p>
-                <p><a href="{% url 'index' %}">Отмена</a></p>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <input type="submit" class="btn btn-outline-secondary" value="Удалить">
+                    <button class="btn btn-outline-secondary btn-block btn_link_color"><a href="{% url 'index' %}"
+                            class="">Отмена</a></button>
+                </div>
             </form>
         </div>
     </div>

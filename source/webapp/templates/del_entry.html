@@ -2,10 +2,10 @@
 {% block title %}Entry{% endblock %}
 {% block menu %}
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Задачу</a>
+    <a class="nav-link" href="{% url 'entry_update' entry.pk %}">Редактировать Запись</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'entry_delete' entry.pk %}">Удалить Задачу</a>
+    <a class="nav-link" href="{% url 'entry_delete' entry.pk %}">Удалить Запись</a>
 </li>
 {% endblock %}
 {% block content%}
@@ -15,7 +15,6 @@
             <h5 class="card-title">Имя автора: {{ entry.author_name }}</h5>
             <p>Почта автора: {{ entry.author_mailbox }}</p>
             <p>Запис: {{ entry.text|linebreaks  }}</p>
-            <p>Статус: {{ entry.status }}</p>
         </div>
     </div>
 </div>

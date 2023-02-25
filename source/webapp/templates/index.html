@@ -5,14 +5,23 @@
 {% block content%}
 <h1>Записи</h1>
 {% for entry in entries %}
-<div class="card">
+<div class="card my-3">
   <div class="card-body">
-    <h5 class="card-title">{{ entry.author_name }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ entry.author_mailbox }}</h6>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h4 class="card-title">{{ entry.author_name }}</h4>
+      </div>
+      <div>
+        <a class="" href="{% url 'entry_delete' entry.pk %}">
+          <i class="fa-regular fa-trash-can tech_icon"></i>
+        </a>
+        <a class="" href="{% url 'entry_update' entry.pk %}">
+          <i class="fa-regular fa-pen-to-square tech_icon"></i>
+        </a>
+      </div>
+    </div>
+    <h5 class="card-subtitle mb-2 text-muted">{{ entry.author_mailbox }}</h5>
     <p class="card-text">{{ entry.text }}</p>
-    <p class="card-text">{{ entry.created_at }}</p>
-    <p class="card-text">{{ entry.updated_at }}</p>
-    <p class="card-text">{{ entry.status }}</p>
   </div>
 </div>
 {% endfor %}

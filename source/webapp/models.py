@@ -16,13 +16,12 @@ class Entry(models.Model):
         auto_now=True, verbose_name="Время и дата редактирования")
     status = models.CharField(max_length=200, null=False, blank=False,
                               choices=Static.choices, default='active', verbose_name="Статус")
-    is_deleted = models.BooleanField(
-        verbose_name='удалено', null=False, default=False)
+    
 
     def __str__(self):
         return f"{self.author_name} - {self.text}"
 
     def delete(self, using=None, keep_parents=False):
-        self.is_deleted = True
+        self.status = 'in blocked'
         self.deleted_at = timezone.now()
         self.save()

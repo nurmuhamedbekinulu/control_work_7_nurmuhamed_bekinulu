@@ -35,8 +35,6 @@ def update_view(request, pk):
         entry.author_name = request.POST.get('author_name')
         entry.author_mailbox = request.POST.get('author_mailbox')
         entry.text = request.POST.get('text')
-        entry.created_at = request.POST.get('created_at')
-        entry.updated_at = request.POST.get('updated_at')
         entry.status = request.POST.get('status')
         entry.save()
         return redirect('entry_detail', pk=entry.pk)

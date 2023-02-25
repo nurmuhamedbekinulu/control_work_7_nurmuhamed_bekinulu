@@ -3,8 +3,8 @@
 {% block menu%}
 {% endblock %}
 {% block content%}
-<h1>Список задач</h1>
-{% for task in tasks %}
+<h1>Записи</h1>
+{% for entry in entries %}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">{{ entry.author_name }}</h5>
@@ -13,7 +13,6 @@
     <p class="card-text">{{ entry.created_at }}</p>
     <p class="card-text">{{ entry.updated_at }}</p>
     <p class="card-text">{{ entry.status }}</p>
-    <!-- <a href="{% url 'task_detail' task.pk %}" class="card-link">Подробнее...</a> -->
   </div>
 </div>
 {% endfor %}

@@ -1,6 +1,5 @@
 class Static():
     choices = [
-            ('new', 'Новая'),
-            ('in process', 'В процессе'),
-            ('done', 'Сделано')
-            ]
+        ('active', 'Активно'),
+        ('in blocked', 'Заблокировано')
+    ]

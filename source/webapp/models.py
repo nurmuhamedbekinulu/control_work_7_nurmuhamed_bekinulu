@@ -40,7 +40,7 @@ class Entry(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="Время и дата редактирования")
     status = models.CharField(max_length=200, null=False, blank=False,
-                              choices=Static.choices, default='new', verbose_name="Статус")
+                              choices=Static.choices, default='active', verbose_name="Статус")
 
     def __str__(self):
         return f"{self.author_name} - {self.text}"
